@@ -1,0 +1,42 @@
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 28px 36px 0;
+  background: transparent;
+}
+
+.topbar-title {
+  font-weight: 800;
+  font-size: 38px;
+  color: #2949a2;
+  margin: 0;
+  letter-spacing: 0.01em;
+}
+
+.topbar-actions {
+  display: flex;
+  gap: 12px;
+}
+
+.btn-report {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: linear-gradient(295deg, #232367 15%, #4545cd 94%);
+  color: #fff;
+  border: none;
+  border-radius: 25px;
+  padding: 12px 24px;
+  font-weight: 700;
+  font-size: 15px;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  letter-spacing: 0.02em;
+  font-family: inherit;
+  transition: opacity 0.15s;
+}
+
+.btn-report:hover {
+  opacity: 0.88;
+}
