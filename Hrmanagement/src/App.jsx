@@ -4,6 +4,7 @@ import LoginInfo from './pages/LoginInfo';
 import PlaceholderPage from './pages/PlaceholderPage';
 import './styles/global.css';
 import Dashboard from './Dashboard/Dashboard';
+import EmployeeDetails from './Employee/Employee';
 
 export default function App() {
   return (
@@ -15,7 +16,7 @@ export default function App() {
         {/* All pages share the sidebar Layout */}
         <Route element={<Layout />}>
           <Route path="/dashboard"   element={<Dashboard/>} />
-          <Route path="/employee"    element={<PlaceholderPage />} />
+          <Route path="/employee"    element={<EmployeeDetails />} />
           <Route path="/attendance"  element={<PlaceholderPage />} />
           <Route path="/payroll"     element={<PlaceholderPage />} />
           <Route path="/leave"       element={<PlaceholderPage />} />
