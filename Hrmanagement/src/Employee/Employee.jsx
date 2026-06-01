@@ -137,9 +137,6 @@ function EmployeeList({ onSelectEmployee }) {
             <option value="Product">Product</option>
             <option value="Marketing">Marketing</option>
           </select>
-          <button className="add-btn">
-            <span className="plus-icon">+</span> Add Employee
-          </button>
         </div>
       </div>
 
