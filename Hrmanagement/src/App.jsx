@@ -4,6 +4,9 @@ import LoginInfo from './pages/LoginInfo';
 import PlaceholderPage from './pages/PlaceholderPage';
 import './styles/global.css';
 import Dashboard from './Dashboard/Dashboard';
+import LeaveManagement from './Leave/LeaveManagement';
+import Payroll from './Payroll/Payroll';
+import Attendance from './Attendance/Attendance';
 
 export default function App() {
   return (
@@ -16,11 +19,11 @@ export default function App() {
         <Route element={<Layout />}>
           <Route path="/dashboard"   element={<Dashboard/>} />
           <Route path="/employee"    element={<PlaceholderPage />} />
-          <Route path="/attendance"  element={<PlaceholderPage />} />
-          <Route path="/payroll"     element={<PlaceholderPage />} />
-          <Route path="/leave"       element={<PlaceholderPage />} />
+          <Route path="/attendance"  element={<Attendance />} />
+          <Route path="/payroll"     element={<Payroll />} />
           <Route path="/recruitment" element={<PlaceholderPage />} />
           <Route path="/login-info"  element={<LoginInfo />} />
+          <Route path="/leave"       element={<LeaveManagement />} />
         </Route>
       </Routes>
     </BrowserRouter>

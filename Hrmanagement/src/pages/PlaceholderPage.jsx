@@ -28,13 +28,7 @@ const icons = {
       <path d="M2 10h20" strokeLinecap="round" />
     </svg>
   ),
-  '/leave': (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-      <rect x="3" y="4" width="18" height="17" rx="2" />
-      <path d="M16 2v4M8 2v4M3 10h18" strokeLinecap="round" />
-      <path d="M8 14l2 2 4-4" strokeLinecap="round" strokeLinejoin="round" />
-    </svg>
-  ),
+ 
   '/recruitment': (
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
       <circle cx="9" cy="8" r="3.5" />
@@ -49,7 +43,7 @@ const labels = {
   '/employee': 'Employee',
   '/attendance': 'Attendance',
   '/payroll': 'Payroll',
-  '/leave': 'Leave',
+  
   '/recruitment': 'Recruitment',
 };
 
