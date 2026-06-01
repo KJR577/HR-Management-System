@@ -22,6 +22,7 @@ export default function App() {
           <Route path="/leave"       element={<PlaceholderPage />} />
           <Route path="/recruitment" element={<PlaceholderPage />} />
           <Route path="/login-info"  element={<LoginInfo />} />
+          
         </Route>
       </Routes>
     </BrowserRouter>
