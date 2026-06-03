@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import Header from "./Header";
 import Tabs from "./Tabs";
 import Cards from "./Cards";
-import Pipeline from "./Pipeline";
 import Candidates from "./Candidates";
 import Department from "./Department";
 import JobOpenings from "./JobOpenings";
@@ -21,7 +20,6 @@ const Recruitment = () => {
         <div className="recruitment-body">
           <Cards />
           <div className="recruitment-mid">
-            <Pipeline summary={true} />   {/* ← ONLY CHANGE */}
             <Candidates />
           </div>
           <Department />
@@ -30,7 +28,6 @@ const Recruitment = () => {
 
       {activeTab === "Job openings" && <JobOpenings />}
       {activeTab === "Candidates" && <CandidatesTab />}
-      {activeTab === "Pipelines" && <Pipeline />}
 
     </div>
   );

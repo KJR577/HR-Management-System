@@ -5,9 +5,14 @@ import loginImage from "./assets/hrms.png";
 import forgotImage from "./assets/forgot.png";
 import { useNavigate } from "react-router-dom";
 
-
 const Login = () => {
-   const navigate = useNavigate();
+  const navigate = useNavigate();
+  
+  //  FIXED: Moved inside the component body
+  const [email, setEmail] = useState("");
+  const [generatedOTP, setGeneratedOTP] = useState("");
+  const [enteredOTP, setEnteredOTP] = useState("");
+  
   const [role, setRole] = useState("HR");
   const [forgotPage, setForgotPage] = useState(false);
   const [resetPage, setResetPage] = useState(false);
@@ -22,19 +27,39 @@ const Login = () => {
     }
   };
 
+  //  FIXED: Removed duplicate nested function wrapper
   const handleSendOTP = () => {
-    alert("OTP has been sent to your email!");
-    // You can add real OTP logic here later
+    if (!email) {
+      alert("Please enter your email address");
+      return;
+    }
+
+    const otp = Math.floor(100000 + Math.random() * 900000).toString();
+    setGeneratedOTP(otp);
+
+    // For testing purpose
+    alert(`OTP Sent Successfully!\nOTP: ${otp}`);
+    console.log("Generated OTP:", otp);
   };
 
+  //  FIXED: Removed duplicate nested function wrapper
   const handleForgotSubmit = () => {
-    setForgotPage(false);
-    setResetPage(true);
+    if (!enteredOTP) {
+      alert("Please enter OTP");
+      return;
+    }
+
+    if (enteredOTP === generatedOTP) {
+      alert("OTP Verified Successfully");
+      setForgotPage(false);
+      setResetPage(true);
+    } else {
+      alert("Invalid OTP");
+    }
   };
 
   const handleResetSubmit = () => {
     alert("Password reset successfully!");
-    // Reset all states
     setResetPage(false);
     setForgotPage(false);
   };
@@ -45,10 +70,8 @@ const Login = () => {
       {!forgotPage && !resetPage ? (
         <div className="login-container">
           {/* LEFT SIDE */}
-          <div className="left-side">
-            <div className="image-box">
-              <img src={loginImage} alt="login" />
-            </div>
+          <div className="image-box">
+            <img src={loginImage} alt="login" />
           </div>
 
           {/* RIGHT SIDE */}
@@ -95,12 +118,13 @@ const Login = () => {
                 </button>
               </div>
 
-            <button
-            type="button"
-            className="login-btn"
-            onClick={handleLogin}>
-            Login
-          </button>
+              <button
+                type="button"
+                className="login-btn"
+                onClick={handleLogin}
+              >
+                Login
+              </button>
             </form>
 
             <p className="help-text">
@@ -125,7 +149,12 @@ const Login = () => {
             <form className="forgot-form">
               <label>Email ID</label>
               <div className="forgot-input">
-                <input type="email" placeholder="Enter Email ID" />
+                <input
+                  type="email"
+                  placeholder="Enter Email ID"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                />
                 <FaEnvelope />
               </div>
 
@@ -139,7 +168,12 @@ const Login = () => {
 
               <label>Enter OTP</label>
               <div className="forgot-input">
-                <input type="text" placeholder="Enter OTP" />
+                <input
+                  type="text"
+                  placeholder="Enter OTP"
+                  value={enteredOTP}
+                  onChange={(e) => setEnteredOTP(e.target.value)}
+                />
                 <FaEyeSlash />
               </div>
 
@@ -150,8 +184,6 @@ const Login = () => {
               >
                 Submit
               </button>
-
-              {/* Back button removed as per your request */}
             </form>
           </div>
         </div>

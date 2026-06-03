@@ -3,6 +3,8 @@ import Layout from './HR layout/components/Layout';
 import LoginInfo from './HR layout/pages/LoginInfo';
 import PlaceholderPage from './HR layout/pages/PlaceholderPage';
 import './HR layout/styles/global.css';
+import QuickActions from './login/QuickActions';
+import AdminLogin from './MarkAttendance/AdminLogin';
 
 import Emplayout from './Employee layout/Empcomponentse/Layoute'
 import Emplogininfo from './Employee layout/Emppages/Logininfoe'
@@ -19,6 +21,7 @@ import EmployeeDashboard from './Employee layout/Empdashboard/EmployeeDashboard'
 import EmployeeRecruitment from './Employee layout/Employeemodule/EmployeeProfile';
 import EmployeeLeave from './Employee layout/Empleave/Leave';
 import Employeerecritment from './Employee layout/Emprecruitment/RecruitmentModule'; 
+import EmployeeLogin from './MarkAttendance/EmployeeLogin';
 
 
 export default function App() {
@@ -26,10 +29,13 @@ export default function App() {
     <BrowserRouter>
       <Routes>
         {/* Redirect root to login */}
-        <Route path="/" element={<Navigate to="/login" replace />} />
+        <Route path="/" element={<Navigate to="/quick-actions" replace />} />
 
         {/* Login page without Layout */}
+        <Route path="/quick-actions" element={<QuickActions />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/admin-login" element={<AdminLogin />} />
+        <Route path="/attendancelogin" element={<EmployeeLogin />} />
 
         {/* Protected/Main pages with Layout */}
         <Route element={<Layout />}>

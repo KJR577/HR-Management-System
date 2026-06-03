@@ -1,6 +1,8 @@
 import '../styles/LoginInfoe.css';
-
+import { useNavigate } from 'react-router-dom';
 export default function LoginInfo() {
+  const navigate = useNavigate();
+
   return (
     <div className="login-info-wrapper">
       <div className="login-info-card">
@@ -27,7 +29,9 @@ export default function LoginInfo() {
         </div>
 
         {/* Sign out */}
-        <button className="signout-btn">Sign Out</button>
+        <button className="signout-btn" onClick={() => navigate('/login')}>
+          Sign Out
+        </button>
       </div>
     </div>
   );
