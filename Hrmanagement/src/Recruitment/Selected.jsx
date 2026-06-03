@@ -7,8 +7,7 @@ const selectedCandidates = [
 
 function Selected() {
   return (
-    <div className="pipeline-stage-content">
-      <h3>Selected <span className="stage-badge">{selectedCandidates.length}</span></h3>
+    <div>
       <div className="candidate-list">
         {selectedCandidates.map((c) => (
           <div key={c.id} className="candidate-item">

@@ -5,25 +5,25 @@ import Interview from "./Interview";
 import Selected from "./Selected";
 
 const pipelineData = [
-  { label: "Screening",  count: 2, total: 8, color: "#6366f1" },
-  { label: "Assessment", count: 1, total: 8, color: "#a855f7" },
-  { label: "Interview",  count: 2, total: 8, color: "#06b6d4" },
-  { label: "Offer",      count: 1, total: 8, color: "#22c55e" },
-  { label: "Hired",      count: 1, total: 8, color: "#84cc16" },
-  { label: "Rejected",   count: 1, total: 8, color: "#ef4444" },
+  { label: "Screening",  count: 2, total: 8, color: "#6366f1" },  // purple-blue
+  { label: "Assessment", count: 1, total: 8, color: "#a855f7" },  // purple
+  { label: "Interview",  count: 2, total: 8, color: "#06b6d4" },  // cyan
+  { label: "Offer",      count: 1, total: 8, color: "#22c55e" },  // green
+  { label: "Hired",      count: 1, total: 8, color: "#84cc16" },  // lime
+  { label: "Rejected",   count: 1, total: 8, color: "#ef4444" },  // red
 ];
 
 const stages = [
-  { label: "Applied",   count: 4 },
-  { label: "Screening", count: 2 },
-  { label: "Interview", count: 2 },
-  { label: "Selected",  count: 2 },
+  { label: "Applied",   count: 4, color: "#6366f1", bg: "#eef2ff" },
+  { label: "Screening", count: 2, color: "#a855f7", bg: "#faf5ff" },
+  { label: "Interview", count: 2, color: "#06b6d4", bg: "#ecfeff" },
+  { label: "Selected",  count: 2, color: "#22c55e", bg: "#f0fdf4" },
 ];
 
 function Pipeline({ summary = false }) {
   const [activeStage, setActiveStage] = useState("Applied");
 
-  // ── Overview bar chart ──
+  // Overview bar chart
   if (summary) {
     return (
       <div className="pipeline-card">
@@ -41,7 +41,12 @@ function Pipeline({ summary = false }) {
                   }}
                 />
               </div>
-              <span className="pipeline-count">{item.count}</span>
+              <span
+                className="pipeline-count"
+                style={{ color: item.color, fontWeight: 700 }}
+              >
+                {item.count}
+              </span>
             </div>
           ))}
         </div>
@@ -49,7 +54,7 @@ function Pipeline({ summary = false }) {
     );
   }
 
-  // ── Pipelines tab stage switcher ──
+  // Pipelines tab stage switcher
   const renderStage = () => {
     switch (activeStage) {
       case "Applied":   return <Applied />;
@@ -60,6 +65,9 @@ function Pipeline({ summary = false }) {
     }
   };
 
+  const activeColor = stages.find(s => s.label === activeStage)?.color || "#1e293b";
+  const activeBg    = stages.find(s => s.label === activeStage)?.bg    || "#f1f5f9";
+
   return (
     <div className="pipeline-tab-wrapper">
       <h2 className="pipeline-main-title">Recruitment Pipeline</h2>
@@ -69,12 +77,35 @@ function Pipeline({ summary = false }) {
             key={stage.label}
             className={`stage-btn ${activeStage === stage.label ? "active" : ""}`}
             onClick={() => setActiveStage(stage.label)}
+            style={
+              activeStage === stage.label
+                ? { background: stage.color, borderColor: stage.color, color: "#fff" }
+                : { borderColor: "#e2e8f0", color: "#64748b" }
+            }
           >
-            {stage.label} <span className="stage-count">{stage.count}</span>
+            {stage.label}
+            <span
+              className="stage-count"
+              style={
+                activeStage === stage.label
+                  ? { background: "rgba(255,255,255,0.25)", color: "#fff" }
+                  : { background: stage.bg, color: stage.color }
+              }
+            >
+              {stage.count}
+            </span>
           </button>
         ))}
       </div>
-      {renderStage()}
+
+      {/* Colored heading line */}
+      <div
+        className="pipeline-stage-content"
+        style={{ borderTop: `3px solid ${activeColor}` }}
+      >
+        {renderStage()}
+      </div>
+
     </div>
   );
 }
