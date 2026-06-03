@@ -1,27 +1,27 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
-import Layout from './HR layout/components/Layout';
-import LoginInfo from './HR layout/pages/LoginInfo';
-import PlaceholderPage from './HR layout/pages/PlaceholderPage';
+import Layout from './HR layout/components/Layout.jsx';
+import LoginInfo from './HR layout/pages/LoginInfo.jsx';
+import PlaceholderPage from './HR layout/pages/PlaceholderPage.jsx';
 import './HR layout/styles/global.css';
-import QuickActions from './login/QuickActions';
-import AdminLogin from './MarkAttendance/AdminLogin';
+import QuickActions from './Login/QuickActions.jsx';
+import AdminLogin from './MarkAttendance/AdminLogin.jsx';
 
-import Emplayout from './Employee layout/Empcomponentse/Layoute'
-import Emplogininfo from './Employee layout/Emppages/Logininfoe'
+import EmployeeLayout from './Employee layout/Empcomponentse/Layoute.jsx';
+import EmployeeLoginInfo from './Employee layout/Emppages/Logininfoe.jsx';
 
-import Dashboard from './HR layout/Dashboard/Dashboard';
-import EmployeeDetails from './HR layout/Employee/Employee';
-import LeaveManagement from './HR layout/Leave/LeaveManagement';
-import Payroll from './HR layout/Payroll/Payroll';
-import AttendanceManagement from './HR layout/Attendance/AttendanceManagement';
-import Recruitment from './HR layout/Recruitment/Recruitment';
-import Login from './Login/login';
+import Dashboard from './HR layout/Dashboard/Dashboard.jsx';
+import EmployeeDetails from './HR layout/Employee/Employee.jsx';
+import LeaveManagement from './HR layout/Leave/LeaveManagement.jsx';
+import Payroll from './HR layout/Payroll/Payroll.jsx';
+import AttendanceManagement from './HR layout/Attendance/AttendanceManagement.jsx';
+import Recruitment from './HR layout/Recruitment/Recruitment.jsx';
+import Login from './Login/Login.jsx';
 
-import EmployeeDashboard from './Employee layout/Empdashboard/EmployeeDashboard';
-import EmployeeRecruitment from './Employee layout/Employeemodule/EmployeeProfile';
-import EmployeeLeave from './Employee layout/Empleave/Leave';
-import Employeerecritment from './Employee layout/Emprecruitment/RecruitmentModule'; 
-import EmployeeLogin from './MarkAttendance/EmployeeLogin';
+import EmployeeDashboard from './Employee layout/Empdashboard/EmployeeDashboard.jsx';
+import EmployeeProfile from './Employee layout/Employeemodule/EmployeeProfile.jsx';
+import EmployeeLeave from './Employee layout/Empleave/Leave.jsx';
+import EmployeeRecruitmentModule from './Employee layout/Emprecruitment/RecruitmentModule.jsx';
+import EmployeeLogin from './MarkAttendance/EmployeeLogin.jsx';
 
 
 export default function App() {
@@ -47,12 +47,12 @@ export default function App() {
           <Route path="/recruitment" element={<Recruitment />} />
           <Route path="/login-info" element={<LoginInfo />} />
         </Route>
-          <Route element={<Emplayout />}>
+          <Route element={<EmployeeLayout />}>
           <Route path="/employee-dashboard" element={<EmployeeDashboard />} />
-          <Route path="/employee-profile" element={<EmployeeRecruitment />} />
+          <Route path="/employee-profile" element={<EmployeeProfile />} />
           <Route path="/employee-leave" element={<EmployeeLeave />} />
-          <Route path="/employee-recruitment" element={<Employeerecritment />} />
-          <Route path="/emplogin-info" element={<Emplogininfo />} />
+          <Route path="/employee-recruitment" element={<EmployeeRecruitmentModule />} />
+          <Route path="/emplogin-info" element={<EmployeeLoginInfo />} />
         </Route>
       </Routes>
     </BrowserRouter>

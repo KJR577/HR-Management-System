@@ -1,4 +1,4 @@
-import '../styles/LoginInfo.css';
+import '../styles/Logininfo.css';
 import { useNavigate } from 'react-router-dom';
 
 export default function LoginInfo() {

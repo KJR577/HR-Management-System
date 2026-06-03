@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import { supabase } from "./supabaseClient";
 import "./Dashboard.css";
 
 const TOP_METRICS = [
@@ -98,23 +97,25 @@ export default function Dashboard() {
   }, []);
 
   useEffect(() => {
-    async function fetchActivities() {
-      try {
-        setLoading(true);
-        const { data, error } = await supabase
-          .from("activities")
-          .select("*")
-          .order("id", { ascending: true });
-
-        if (error) throw error;
-        setActivities(data || []);
-      } catch (error) {
-        console.error("Error fetching activities:", error.message);
-      } finally {
-        setLoading(false);
-      }
-    }
-    fetchActivities();
+    // TODO: Connect to supabase backend when available
+    // async function fetchActivities() {
+    //   try {
+    //     setLoading(true);
+    //     const { data, error } = await supabase
+    //       .from("activities")
+    //       .select("*")
+    //       .order("id", { ascending: true });
+    //
+    //     if (error) throw error;
+    //     setActivities(data || []);
+    //   } catch (error) {
+    //     console.error("Error fetching activities:", error.message);
+    //   } finally {
+    //     setLoading(false);
+    //   }
+    // }
+    // fetchActivities();
+    setLoading(false);
   }, []);
 
   return (
