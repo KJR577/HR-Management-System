@@ -9,13 +9,13 @@ export default function EmployeeLogin() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // Capture the current system time structured as a readable string
+
     const currentTimeString = new Date().toLocaleString("en-IN", {
       dateStyle: "medium",
       timeStyle: "medium",
     });
 
-    // Log the payload details to the console
+   
     console.log("=== Employee Authentication Payload ===");
     console.log("Employee ID: ", employeeId);
     console.log("Password:    ", password);
