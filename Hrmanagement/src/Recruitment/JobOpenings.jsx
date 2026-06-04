@@ -3,107 +3,8 @@ import JobFilter from "./JobFilter";
 import JobCard from "./JobCard";
 import "./JobOpenings.css";
 
-const INITIAL_JOBS = [
-  {
-    id: 1,
-    title: "Senior React Developer",
-    department: "Engineering",
-    jobType: "Full-time",
-    workMode: "On-site",
-    experience: "3-5 years",
-    openings: 2,
-    salaryMin: 600000,
-    salaryMax: 900000,
-    currency: "INR",
-    deadline: "30 Jun 2026",
-    status: "Active",
-    applicants: 8,
-    hiringManager: "Rakesh",
-  },
-  {
-    id: 2,
-    title: "UI/UX Designer",
-    department: "Design",
-    jobType: "Full-time",
-    workMode: "Hybrid",
-    experience: "1-3 years",
-    openings: 1,
-    salaryMin: 400000,
-    salaryMax: 700000,
-    currency: "INR",
-    deadline: "15 Jul 2026",
-    status: "Active",
-    applicants: 5,
-    hiringManager: "Priya",
-  },
-  {
-    id: 3,
-    title: "Data Scientist",
-    department: "Analytics",
-    jobType: "Full-time",
-    workMode: "Remote",
-    experience: "3-5 years",
-    openings: 1,
-    salaryMin: 700000,
-    salaryMax: 1200000,
-    currency: "INR",
-    deadline: "10 Jul 2026",
-    status: "Active",
-    applicants: 12,
-    hiringManager: "Suresh",
-  },
-  {
-    id: 4,
-    title: "HR Executive",
-    department: "HR",
-    jobType: "Full-time",
-    workMode: "On-site",
-    experience: "0-1 year",
-    openings: 1,
-    salaryMin: 250000,
-    salaryMax: 400000,
-    currency: "INR",
-    deadline: "20 Jun 2026",
-    status: "Active",
-    applicants: 3,
-    hiringManager: "Rakesh",
-  },
-  {
-    id: 5,
-    title: "Node.js Backend Developer",
-    department: "Engineering",
-    jobType: "Contract",
-    workMode: "Remote",
-    experience: "1-3 years",
-    openings: 1,
-    salaryMin: 500000,
-    salaryMax: 800000,
-    currency: "INR",
-    deadline: "05 Jun 2026",
-    status: "Closed",
-    applicants: 15,
-    hiringManager: "Suresh",
-  },
-  {
-    id: 6,
-    title: "Marketing Analyst",
-    department: "Marketing",
-    jobType: "Full-time",
-    workMode: "Hybrid",
-    experience: "1-3 years",
-    openings: 2,
-    salaryMin: 350000,
-    salaryMax: 550000,
-    currency: "INR",
-    deadline: "01 Aug 2026",
-    status: "Draft",
-    applicants: 0,
-    hiringManager: "Meena",
-  },
-];
-
-const JobOpenings = () => {
-  const [jobs, setJobs] = useState(INITIAL_JOBS);
+// ✅ Receive jobs from parent (Recruitment.jsx)
+const JobOpenings = ({ jobOpenings, setJobOpenings }) => {
   const [filters, setFilters] = useState({
     search: "",
     department: "All",
@@ -114,7 +15,7 @@ const JobOpenings = () => {
   const [selectedJob, setSelectedJob] = useState(null);
 
   // Filter logic
-  const filtered = jobs.filter((j) => {
+  const filtered = jobOpenings.filter((j) => {
     const s = filters.search.toLowerCase();
     return (
       (s === "" || j.title.toLowerCase().includes(s) || j.department.toLowerCase().includes(s)) &&
@@ -127,7 +28,7 @@ const JobOpenings = () => {
 
   const handleDelete = (id) => {
     if (window.confirm("Are you sure you want to delete this job?")) {
-      setJobs((prev) => prev.filter((j) => j.id !== id));
+      setJobOpenings((prev) => prev.filter((j) => j.id !== id));
     }
   };
 
@@ -139,11 +40,11 @@ const JobOpenings = () => {
     setSelectedJob(job);
   };
 
-  // Stats
-  const total  = jobs.length;
-  const active = jobs.filter((j) => j.status === "Active").length;
-  const closed = jobs.filter((j) => j.status === "Closed").length;
-  const draft  = jobs.filter((j) => j.status === "Draft").length;
+  // ✅ Stats — auto calculated from live jobOpenings
+  const total  = jobOpenings.length;
+  const active = jobOpenings.filter((j) => j.status === "Active").length;
+  const closed = jobOpenings.filter((j) => j.status === "Closed").length;
+  const draft  = jobOpenings.filter((j) => j.status === "Draft").length;
 
   return (
     <div className="job-openings-wrapper">
